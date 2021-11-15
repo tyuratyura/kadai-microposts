@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     @pagy, @followers = pagy(@user.followers)
     counts(@user)
   end
+  
+ def likes
+     @user = User.find(params[:id])
+     @pagy,@favorites = pagy(@user.likes)
+    counts(@user)
+ end 
+
 
   private
 
@@ -45,3 +52,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
+
+ 
